@@ -5,6 +5,7 @@ public class npcTalk : MonoBehaviour
     private bool inRange;
     public GameObject uiElement;
     public DialogueManager dialogueManager;
+    public DialogueLine[] dialogueLines;
 
     private playerController playerController; // Reference to player script
 
@@ -15,10 +16,13 @@ public class npcTalk : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && inRange)
+        if (Input.GetKeyDown(KeyCode.E) && inRange && !dialogueManager.inTalk)
         {
             Debug.Log("E was pressed!");
             dialogueManager.dialoguePanel.SetActive(true);
+            dialogueManager.dialogueLines = dialogueLines;
+            dialogueManager.currentLine = 0;
+            dialogueManager.inTalk = true;
             dialogueManager.NextLine(); // Start dialogue
 
             // Lock the player's camera when dialogue starts

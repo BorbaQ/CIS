@@ -9,21 +9,23 @@ public class DialogueManager : MonoBehaviour
     public Image characterImage;
     public GameObject dialoguePanel;
     public bool inrange;
+    public bool inTalk;
 
     [Header("Dialogue Data")]
     public DialogueLine[] dialogueLines;
 
-    private int currentLine = 0;
+    public playerController player;
+
+    public int currentLine = 0;
 
     void Start()
     {
-        ShowLine(currentLine);
     }
 
     void Update()
     {
         // Progress dialogue on Space or left mouse click
-        if (inrange && (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)))
+        if (inrange && (Input.GetKeyDown(KeyCode.E) || Input.GetMouseButtonDown(0)))
         {
             NextLine();
         }
@@ -46,8 +48,8 @@ public class DialogueManager : MonoBehaviour
 
     public void NextLine()
     {
-        currentLine++;
         ShowLine(currentLine);
+        currentLine++;
     }
 
     void EndDialogue()
@@ -56,5 +58,10 @@ public class DialogueManager : MonoBehaviour
         characterImage.sprite = null;
         Debug.Log("Dialogue ended.");
         dialoguePanel.SetActive(false);
+        inTalk = false;
+        if (player != null)
+        {
+            player.cameraLock = false;
+        }
     }
 }

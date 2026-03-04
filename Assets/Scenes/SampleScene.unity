@@ -855,6 +855,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiElement: {fileID: 1481850582}
   dialogueManager: {fileID: 1223910811}
+  dialogueLines:
+  - characterName: Mint
+    characterSprite: {fileID: 21300000, guid: c081d3d0e92a0e64eb363a01dc608a04, type: 3}
+    text: 'i wish i could impregnate femboys
+
+'
+  - characterName: Mint
+    characterSprite: {fileID: 21300000, guid: c5916fe018ba8394ca2bdc9d171d5030, type: 3}
+    text: hello, im mint chan your ever so helpfull support character
+  - characterName: Mint
+    characterSprite: {fileID: 21300000, guid: c081d3d0e92a0e64eb363a01dc608a04, type: 3}
+    text: 'i wish i could impregnate femboys
+
+'
 --- !u!135 &1002206595
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -925,13 +939,10 @@ MonoBehaviour:
   characterImage: {fileID: 1664211891}
   dialoguePanel: {fileID: 675637978}
   inrange: 0
-  dialogueLines:
-  - characterName: mint
-    characterSprite: {fileID: 21300000, guid: c5916fe018ba8394ca2bdc9d171d5030, type: 3}
-    text: Hi, im mint-chan your ever so helpfull support character.
-  - characterName: mint
-    characterSprite: {fileID: 21300000, guid: c5916fe018ba8394ca2bdc9d171d5030, type: 3}
-    text: Hi, im mint-chan your ever so helpfull support character.
+  inTalk: 0
+  dialogueLines: []
+  player: {fileID: 2110799192}
+  currentLine: 0
 --- !u!1 &1241549767
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,7 +1147,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1481850583
 RectTransform:
   m_ObjectHideFlags: 0

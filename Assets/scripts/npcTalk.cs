@@ -3,11 +3,13 @@ using UnityEngine;
 public class npcTalk : MonoBehaviour
 {
     private bool inRange;
+
     public GameObject uiElement;
     public DialogueManager dialogueManager;
-    public DialogueLine[] dialogueLines;
 
-    private playerController playerController; // Reference to player script
+    public DialogueLineSO startDialogue;
+
+    private playerController playerController;
 
     void Start()
     {
@@ -18,14 +20,8 @@ public class npcTalk : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && inRange && !dialogueManager.inTalk)
         {
-            Debug.Log("E was pressed!");
-            dialogueManager.dialoguePanel.SetActive(true);
-            dialogueManager.dialogueLines = dialogueLines;
-            dialogueManager.currentLine = 0;
-            dialogueManager.inTalk = true;
-            dialogueManager.NextLine(); // Start dialogue
+            dialogueManager.StartDialogue(startDialogue);
 
-            // Lock the player's camera when dialogue starts
             if (playerController != null)
                 playerController.cameraLock = true;
         }
@@ -35,7 +31,6 @@ public class npcTalk : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Get the PlayerController script from the player
             playerController = other.GetComponent<playerController>();
 
             dialogueManager.inrange = true;
@@ -48,7 +43,6 @@ public class npcTalk : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            // Unlock the camera when leaving
             if (playerController != null)
                 playerController.cameraLock = false;
 
@@ -56,7 +50,7 @@ public class npcTalk : MonoBehaviour
             uiElement.SetActive(false);
             inRange = false;
 
-            playerController = null; // Clean up reference
+            playerController = null;
         }
     }
 }

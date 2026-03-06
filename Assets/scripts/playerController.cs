@@ -53,10 +53,12 @@ public class playerController : MonoBehaviour
             velocity.y = -2f;
         }
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        float forward = Input.GetKey(KeyCode.W) ? 1 : 0;
+        float backward = Input.GetKey(KeyCode.S) ? 1 : 0;
+        float right = Input.GetKey(KeyCode.D) ? 1 : 0;
+        float left = Input.GetKey(KeyCode.A) ? 1 : 0;
 
-        Vector3 move = transform.right * x + transform.forward * z;
+        Vector3 move = transform.right * (right-left) + transform.forward * (forward-backward);
         controller.Move(move * speed * Time.deltaTime);
 
         if (Input.GetButtonDown("Jump") && isGrounded)

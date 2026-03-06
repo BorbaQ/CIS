@@ -181,7 +181,7 @@ public class DialogueManager : MonoBehaviour
 
     void HandleChoiceInput()
     {
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             selectedChoiceIndex--;
             if (selectedChoiceIndex < 0)
@@ -190,7 +190,7 @@ public class DialogueManager : MonoBehaviour
             HighlightChoice();
         }
 
-        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.Alpha3) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             selectedChoiceIndex++;
             if (selectedChoiceIndex >= activeChoiceButtons.Length)
